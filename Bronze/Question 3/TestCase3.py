@@ -17,4 +17,4 @@ for i in range(len(values)):
     if values[i] < smallest:
         smallest = values[i]
 
-print(largest-smallest) #unconfirmed output: 22
+print(largest-smallest)
