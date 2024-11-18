@@ -5,4 +5,4 @@ for i in range(len(array)):
     if array[i] % 11 == 0:
         count = count + 1
 
-print(count) #unconfirmed output: 3
+print(count)
