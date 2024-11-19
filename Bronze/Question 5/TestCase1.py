@@ -6,4 +6,4 @@ for i in range(len(coordinates)):
     if coordinates[i][1] == equation[0]*coordinates[i][0] + equation[1]:
         num_of_valid_coordinates = num_of_valid_coordinates + 1
 
-print(num_of_valid_coordinates) #unconfirmed output: 24
+print(num_of_valid_coordinates)
