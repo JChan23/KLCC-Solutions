@@ -1,8 +1,4 @@
-array = [381, 496, 981, -849, -120, -777, 802, -743, 512, 130, -998, 124, 33, 601, 847, -222, -153, 403, -365, -766, 654, 900, -13, -600, 235, -176, -953, -78, 470, -579, -849, -622, 704, -852, 832, 102, -908, 186, 771, -36, -984, 450]
-sum = 0
+str = "Count Dracula is the title character of Bram Stoker's 1897 gothic horror novel Dracula. He is considered the prototypical and archetypal vampire in subsequent works of fiction. Aspects of the character are believed by some to have been inspired by the 15th-century Wallachian prince Vlad the Impaler, who was also known as Vlad Dracula, and by Sir Henry Irving and Jacques Damala, actors with aristocratic backgrounds that Stoker had met during his life."
 
-for i in range(len(array)):
-    if array[i] % 2 == 0:
-        sum = sum + array[i]
-
-print(sum)
+reverse = str[::-1]
+print(reverse)
