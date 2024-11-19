@@ -1,4 +1,6 @@
-str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+n = 500
 
-reverse = str[::-1]
-print(reverse)
+if n % 2 == 1:
+    print(((n+3)/2)+(n**2))
+else:
+    print(((n+4)/2)+(0.25*(n**2)))
