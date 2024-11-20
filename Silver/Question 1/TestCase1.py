@@ -3,8 +3,8 @@ array = [['Gastly', 50], ['Haunter', 65], ['Gengar', 130], ['Misdreavus', 60], [
 for i in range(len(array)):
     for j in range(0, len(array)-i-1):
         if array[j][1] > array[j+1][1]:
-            temp = array[j+1][1]
-            array[j+1][1] = array[j][1]
-            array[j][1] = temp
+            temp = array[j+1]
+            array[j+1] = array[j]
+            array[j] = temp
 
 print(array[((len(array)+1)//2)-1][0])
