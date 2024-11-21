@@ -12,6 +12,6 @@ values = list(dictionary.values())
 
 for i in range(len(values)):
     if values[i] > 1:
-        repeated = values[i] - 1
+        repeated = repeated + values[i]
 
 print(repeated)
