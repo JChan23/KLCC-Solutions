@@ -1,43 +1,31 @@
-# THIS SOLUTION WAS PROVIDED FROM CHATGPT - replace with programmer solution when obtained
+from collections import deque, defaultdict
 
-from collections import deque
+def erdos_nicolas_number(collaborations, target_researcher):
+    graph = defaultdict(set)
 
-def find_erdos_number(collaborations, target_researcher):
-    # Create a graph of collaborations
-    graph = {}
     for researcher1, researcher2 in collaborations:
-        if researcher1 not in graph:
-            graph[researcher1] = []
-        if researcher2 not in graph:
-            graph[researcher2] = []
-        graph[researcher1].append(researcher2)
-        graph[researcher2].append(researcher1)
+        graph[researcher1].add(researcher2)
+        graph[researcher2].add(researcher1)
 
-    # Initialize BFS variables
-    queue = deque([("Paul Erdős", 0, "P")])  # (current researcher, Erdős number, path)
-    visited = set()
+    start = "Paul Erdős"
+
+    queue = deque([(start, 0, "P")])
+    visited = set([start])
 
     while queue:
-        current_researcher, erdos_number, path = queue.popleft()
+        current_researcher, distance, path = queue.popleft()
 
-        if current_researcher in visited:
-            continue
-
-        visited.add(current_researcher)
-
-        # Check if we've found the target researcher
-        if current_researcher == target_researcher:
-            return f"{erdos_number}{path}"
-
-        # Add neighbors to the queue
         for neighbor in graph[current_researcher]:
             if neighbor not in visited:
-                queue.append((neighbor, erdos_number + 1, path + neighbor[0]))
+                if neighbor == target_researcher:
+                    return str(distance + 1) + path + target_researcher[0]
+                visited.add(neighbor)
+                new_path = path + neighbor[0]
+                queue.append((neighbor, distance + 1, new_path))
 
-    # If the target researcher is not connected to Paul Erdős
-    return "Not connected"
+    return -1
 
-# Example usage
+target_researcher = "Eve"
 collaborations = [
     ("Paul Erdős", "Alice"),
     ("Derek", "Nolan"),
@@ -48,7 +36,7 @@ collaborations = [
     ("Bobby", "Charlie"),
     ("Caroline", "David"),
     ("Arthur", "Alfred"),
-    ("Paul", "Steven"),
+    ("Riley", "Steven"),
     ("Bob", "Bruce"),
     ("Charlie", "David"),
     ("Harry", "Matthieu"),
@@ -105,7 +93,7 @@ collaborations = [
     ("Peter", "Susan"),
     ("Kimberly", "Bob"),
     ("Homse", "Serena"),
-    ("Rob", "Paul"),
+    ("Rob", "Riley"),
     ("Nolan", "Luna"),
     ("Alice", "Derek"),
     ("Grace", "Aiden"),
@@ -146,12 +134,12 @@ collaborations = [
     ("Bobby", "Charlie"),
     ("Caroline", "David"),
     ("Chad", "Nolon"),
-    ("Paul", "Steven"),
+    ("Riley", "Steven"),
     ("Nolan", "Bruce"),
     ("Charles", "Cookie"),
     ("Caroline", "David"),
     ("Arthur", "Alfred"),
-    ("Paul", "Steven"),
+    ("Riley", "Steven"),
     ("Bob", "Bruce"),
     ("Cynthia", "Clayton"),
     ("Harry", "Matthieu"),
@@ -189,7 +177,7 @@ collaborations = [
     ("Bobby", "Charlie"),
     ("Caroline", "David"),
     ("Arthur", "Alfred"),
-    ("Paul", "Steven"),
+    ("Riley", "Steven"),
     ("Bob", "Bruce"),
     ("Rosita", "Jose"),
     ("Harry", "Matthieu"),
@@ -1218,6 +1206,4 @@ collaborations = [
     ('Shane', 'Volkner'),
 ]
 
-
-target_researcher = "Eve"
-print(find_erdos_number(collaborations, target_researcher))
+print(erdos_nicolas_number(collaborations, target_researcher))
