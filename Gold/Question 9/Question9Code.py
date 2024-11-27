@@ -1,4 +1,4 @@
-#perform pip install pillow and pip install numpy
+#perform pip install pillow in the terminal first
 
 from PIL import Image
 #water = (0, 128, 255)
