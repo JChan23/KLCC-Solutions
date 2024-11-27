@@ -1,9 +1,12 @@
-array = [5, 8, 12, 5, 7, 12, 15, 8, 19, 22, 5, 7, 23, 25, 26, 27, 19, 30, 31, 8, 33, 35, 36, 25, 37, 38, 39, 40, 41, 33, 42, 43, 44, 45, 46, 30, 47, 48, 49, 50, 51, 52, 53, 54, 45, 55, 56, 57, 58, 59, 60, 61, 33, 63, 64, 65, 66, 67, 45]
-no_duplicates = []
+import string
 
-for i in range(len(array)):
-    if array[i] not in no_duplicates:
-        no_duplicates.append(array[i])
+original = "They're creepy and they're kooky. Mysterious and spooky. They're all together ooky . The Addams family. Their house is a museum. When people come to see 'em, They really are a screaming. The Addams family. Neat Sweet Petite. So, put a witch's shawl on, A broomstick you can crawl on. We're gonna play a call on. The Addams family. They're creepy and they're kooky. Mysterious and spooky. They're all together ooky. The Addams family. Strange Deranged The Addams family"
+no_punctuation = original.translate(str.maketrans('', '', string.punctuation)) #Removes punctuation from paragraph
+paragraph = no_punctuation.split(" ") #stores erch individual word seperated by a space in a list
 
-print(no_duplicates)
-# The "list(set(array))" method will not work for this test case, as "set()" will change the order of the list
+longest_word = ""
+for i in range(len(paragraph)):
+    if len(paragraph[i]) > len(longest_word):
+        longest_word = paragraph[i]
+
+print(longest_word)
